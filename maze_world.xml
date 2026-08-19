@@ -1,0 +1,460 @@
+<mujoco model="polar_maze">
+  <compiler angle="degree" autolimits="true"/>
+  <option timestep="0.005" integrator="implicitfast" gravity="0 0 -9.81"/>
+  <visual>
+    <global offwidth="1200" offheight="1200"/>
+  </visual>
+
+  <default>
+    <default class="wall">
+      <geom type="box" rgba="0.55 0.55 0.62 1" contype="1" conaffinity="1"/>
+    </default>
+    <default class="bot_body">
+      <geom rgba="0.85 0.25 0.15 1" contype="2" conaffinity="1" mass="0.9" group="3"/>
+    </default>
+    <default class="bot_marker">
+      <geom rgba="1 1 1 1" contype="0" conaffinity="0" mass="0.001" group="3"/>
+    </default>
+    <default class="wheel">
+      <geom rgba="0.15 0.15 0.15 1" contype="2" conaffinity="1" mass="0.05" group="3"/>
+    </default>
+  </default>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.18 0.2 0.24" rgb2="0.22 0.24 0.28"
+             width="512" height="512"/>
+    <material name="floor_mat" texture="grid" texrepeat="30 30" reflectance="0.05"/>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.55 0.65 0.8" rgb2="0.05 0.05 0.1" width="256" height="256"/>
+  </asset>
+
+  <worldbody>
+    <light name="top_light" pos="0 0 7.50" dir="0 0 -1" diffuse="0.9 0.9 0.9" directional="true"/>
+    <light name="fill_light" pos="3.00 3.00 3.00" diffuse="0.35 0.35 0.35" directional="true"/>
+    <geom name="floor" type="cylinder" size="3.0300 0.02" pos="0 0 -0.02"
+          material="floor_mat" contype="1" conaffinity="1"/>
+
+    <geom name="wr_0" type="box" pos="0.37500 0.64952 0.15000" euler="0 0 -30.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_1" type="box" pos="-0.37500 -0.64952 0.15000" euler="0 0 150.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_2" type="box" pos="0.37500 -0.64952 0.15000" euler="0 0 210.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_3" type="box" pos="1.08253 0.62500 0.15000" euler="0 0 -60.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_4" type="box" pos="0.62500 1.08253 0.15000" euler="0 0 -30.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_5" type="box" pos="0.00000 1.25000 0.15000" euler="0 0 0.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_6" type="box" pos="-0.62500 1.08253 0.15000" euler="0 0 30.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_7" type="box" pos="-1.25000 0.00000 0.15000" euler="0 0 90.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_8" type="box" pos="-1.08253 -0.62500 0.15000" euler="0 0 120.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_9" type="box" pos="-0.00000 -1.25000 0.15000" euler="0 0 180.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_10" type="box" pos="0.62500 -1.08253 0.15000" euler="0 0 210.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_11" type="box" pos="1.08253 -0.62500 0.15000" euler="0 0 240.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_12" type="box" pos="1.51554 0.87500 0.15000" euler="0 0 -60.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_13" type="box" pos="1.23744 1.23744 0.15000" euler="0 0 -45.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_14" type="box" pos="0.45293 1.69037 0.15000" euler="0 0 -15.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_15" type="box" pos="0.00000 1.75000 0.15000" euler="0 0 -0.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_16" type="box" pos="-0.87500 1.51554 0.15000" euler="0 0 30.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_17" type="box" pos="-1.69037 0.45293 0.15000" euler="0 0 75.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_18" type="box" pos="-1.75000 0.00000 0.15000" euler="0 0 90.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_19" type="box" pos="-1.69037 -0.45293 0.15000" euler="0 0 105.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_20" type="box" pos="0.45293 -1.69037 0.15000" euler="0 0 195.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_21" type="box" pos="1.23744 -1.23744 0.15000" euler="0 0 225.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_22" type="box" pos="1.69037 -0.45293 0.15000" euler="0 0 255.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_23" type="box" pos="1.75000 -0.00000 0.15000" euler="0 0 270.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_24" type="box" pos="2.17333 0.58234 0.15000" euler="0 0 -75.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_25" type="box" pos="1.94856 1.12500 0.15000" euler="0 0 -60.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_26" type="box" pos="1.59099 1.59099 0.15000" euler="0 0 -45.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_27" type="box" pos="0.58234 2.17333 0.15000" euler="0 0 -15.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_28" type="box" pos="0.00000 2.25000 0.15000" euler="0 0 -0.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_29" type="box" pos="-0.58234 2.17333 0.15000" euler="0 0 15.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_30" type="box" pos="-1.94856 1.12500 0.15000" euler="0 0 60.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_31" type="box" pos="-2.17333 0.58234 0.15000" euler="0 0 75.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_32" type="box" pos="-2.25000 0.00000 0.15000" euler="0 0 90.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_33" type="box" pos="-1.94856 -1.12500 0.15000" euler="0 0 120.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_34" type="box" pos="-0.00000 -2.25000 0.15000" euler="0 0 180.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_35" type="box" pos="1.12500 -1.94856 0.15000" euler="0 0 210.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_36" type="box" pos="2.25000 -0.00000 0.15000" euler="0 0 270.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_37" type="box" pos="2.65630 0.71175 0.15000" euler="0 0 -75.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_38" type="box" pos="0.71175 2.65630 0.15000" euler="0 0 -15.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_39" type="box" pos="-1.94454 1.94454 0.15000" euler="0 0 45.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_40" type="box" pos="-2.65630 0.71175 0.15000" euler="0 0 75.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_41" type="box" pos="-2.65630 -0.71175 0.15000" euler="0 0 105.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_42" type="box" pos="-0.71175 -2.65630 0.15000" euler="0 0 165.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_43" type="box" pos="0.71175 -2.65630 0.15000" euler="0 0 195.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wr_44" type="box" pos="1.94454 -1.94454 0.15000" euler="0 0 225.00000" size="0.01500 0.25000 0.15000" class="wall"/>
+    <geom name="wa_45_0" type="box" pos="0.49572 0.06526 0.15000" euler="0 0 7.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_45_1" type="box" pos="0.46194 0.19134 0.15000" euler="0 0 22.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_45_2" type="box" pos="0.39668 0.30438 0.15000" euler="0 0 37.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_45_3" type="box" pos="0.30438 0.39668 0.15000" euler="0 0 52.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_46_0" type="box" pos="-0.30438 0.39668 0.15000" euler="0 0 127.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_46_1" type="box" pos="-0.39668 0.30438 0.15000" euler="0 0 142.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_46_2" type="box" pos="-0.46194 0.19134 0.15000" euler="0 0 157.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_46_3" type="box" pos="-0.49572 0.06526 0.15000" euler="0 0 172.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_47_0" type="box" pos="-0.49572 -0.06526 0.15000" euler="0 0 187.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_47_1" type="box" pos="-0.46194 -0.19134 0.15000" euler="0 0 202.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_47_2" type="box" pos="-0.39668 -0.30438 0.15000" euler="0 0 217.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_47_3" type="box" pos="-0.30438 -0.39668 0.15000" euler="0 0 232.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_48_0" type="box" pos="-0.19134 -0.46194 0.15000" euler="0 0 247.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_48_1" type="box" pos="-0.06526 -0.49572 0.15000" euler="0 0 262.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_48_2" type="box" pos="0.06526 -0.49572 0.15000" euler="0 0 277.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_48_3" type="box" pos="0.19134 -0.46194 0.15000" euler="0 0 292.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_49_0" type="box" pos="0.99786 0.06540 0.15000" euler="0 0 3.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_49_1" type="box" pos="0.98079 0.19509 0.15000" euler="0 0 11.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_49_2" type="box" pos="0.94693 0.32144 0.15000" euler="0 0 18.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_49_3" type="box" pos="0.89687 0.44229 0.15000" euler="0 0 26.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_50_0" type="box" pos="0.44229 0.89687 0.15000" euler="0 0 63.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_50_1" type="box" pos="0.32144 0.94693 0.15000" euler="0 0 71.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_50_2" type="box" pos="0.19509 0.98079 0.15000" euler="0 0 78.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_50_3" type="box" pos="0.06540 0.99786 0.15000" euler="0 0 86.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_51_0" type="box" pos="-0.55557 0.83147 0.15000" euler="0 0 123.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_51_1" type="box" pos="-0.65935 0.75184 0.15000" euler="0 0 131.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_51_2" type="box" pos="-0.75184 0.65935 0.15000" euler="0 0 138.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_51_3" type="box" pos="-0.83147 0.55557 0.15000" euler="0 0 146.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_52_0" type="box" pos="-0.89687 0.44229 0.15000" euler="0 0 153.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_52_1" type="box" pos="-0.94693 0.32144 0.15000" euler="0 0 161.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_52_2" type="box" pos="-0.98079 0.19509 0.15000" euler="0 0 168.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_52_3" type="box" pos="-0.99786 0.06540 0.15000" euler="0 0 176.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_53_0" type="box" pos="-0.99786 -0.06540 0.15000" euler="0 0 183.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_53_1" type="box" pos="-0.98079 -0.19509 0.15000" euler="0 0 191.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_53_2" type="box" pos="-0.94693 -0.32144 0.15000" euler="0 0 198.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_53_3" type="box" pos="-0.89687 -0.44229 0.15000" euler="0 0 206.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_54_0" type="box" pos="-0.44229 -0.89687 0.15000" euler="0 0 243.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_54_1" type="box" pos="-0.32144 -0.94693 0.15000" euler="0 0 251.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_54_2" type="box" pos="-0.19509 -0.98079 0.15000" euler="0 0 258.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_54_3" type="box" pos="-0.06540 -0.99786 0.15000" euler="0 0 266.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_55_0" type="box" pos="0.55557 -0.83147 0.15000" euler="0 0 303.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_55_1" type="box" pos="0.65935 -0.75184 0.15000" euler="0 0 311.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_55_2" type="box" pos="0.75184 -0.65935 0.15000" euler="0 0 318.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_55_3" type="box" pos="0.83147 -0.55557 0.15000" euler="0 0 326.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_56_0" type="box" pos="0.89687 -0.44229 0.15000" euler="0 0 333.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_56_1" type="box" pos="0.94693 -0.32144 0.15000" euler="0 0 341.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_56_2" type="box" pos="0.98079 -0.19509 0.15000" euler="0 0 348.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_56_3" type="box" pos="0.99786 -0.06540 0.15000" euler="0 0 356.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_57_0" type="box" pos="1.49857 0.06543 0.15000" euler="0 0 2.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_57_1" type="box" pos="1.48717 0.19579 0.15000" euler="0 0 7.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_57_2" type="box" pos="1.46444 0.32466 0.15000" euler="0 0 12.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_58_0" type="box" pos="-0.45106 1.43058 0.15000" euler="0 0 107.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_58_1" type="box" pos="-0.57403 1.38582 0.15000" euler="0 0 112.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_58_2" type="box" pos="-0.69262 1.33052 0.15000" euler="0 0 117.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_59_0" type="box" pos="-1.10592 1.01339 0.15000" euler="0 0 137.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_59_1" type="box" pos="-1.19003 0.91314 0.15000" euler="0 0 142.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_59_2" type="box" pos="-1.26509 0.80595 0.15000" euler="0 0 147.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_60_0" type="box" pos="-1.33052 0.69262 0.15000" euler="0 0 152.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_60_1" type="box" pos="-1.38582 0.57403 0.15000" euler="0 0 157.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_60_2" type="box" pos="-1.43058 0.45106 0.15000" euler="0 0 162.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_61_0" type="box" pos="-1.26509 -0.80595 0.15000" euler="0 0 212.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_61_1" type="box" pos="-1.19003 -0.91314 0.15000" euler="0 0 217.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_61_2" type="box" pos="-1.10592 -1.01339 0.15000" euler="0 0 222.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_62_0" type="box" pos="-1.01339 -1.10592 0.15000" euler="0 0 227.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_62_1" type="box" pos="-0.91314 -1.19003 0.15000" euler="0 0 232.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_62_2" type="box" pos="-0.80595 -1.26509 0.15000" euler="0 0 237.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_63_0" type="box" pos="-0.69262 -1.33052 0.15000" euler="0 0 242.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_63_1" type="box" pos="-0.57403 -1.38582 0.15000" euler="0 0 247.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_63_2" type="box" pos="-0.45106 -1.43058 0.15000" euler="0 0 252.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_64_0" type="box" pos="0.80595 -1.26509 0.15000" euler="0 0 302.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_64_1" type="box" pos="0.91314 -1.19003 0.15000" euler="0 0 307.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_64_2" type="box" pos="1.01339 -1.10592 0.15000" euler="0 0 312.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_65_0" type="box" pos="1.46444 -0.32466 0.15000" euler="0 0 347.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_65_1" type="box" pos="1.48717 -0.19579 0.15000" euler="0 0 352.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_65_2" type="box" pos="1.49857 -0.06543 0.15000" euler="0 0 357.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_66_0" type="box" pos="1.91388 0.58057 0.15000" euler="0 0 16.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_66_1" type="box" pos="1.87181 0.70450 0.15000" euler="0 0 20.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_66_2" type="box" pos="1.82173 0.82541 0.15000" euler="0 0 24.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_66_3" type="box" pos="1.76384 0.94279 0.15000" euler="0 0 28.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_67_0" type="box" pos="1.36718 1.45973 0.15000" euler="0 0 46.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_67_1" type="box" pos="1.26879 1.54602 0.15000" euler="0 0 50.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_67_2" type="box" pos="1.16496 1.62569 0.15000" euler="0 0 54.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_67_3" type="box" pos="1.05614 1.69840 0.15000" euler="0 0 58.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_68_0" type="box" pos="0.94279 1.76384 0.15000" euler="0 0 61.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_68_1" type="box" pos="0.82541 1.82173 0.15000" euler="0 0 65.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_68_2" type="box" pos="0.70450 1.87181 0.15000" euler="0 0 69.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_68_3" type="box" pos="0.58057 1.91388 0.15000" euler="0 0 73.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_69_0" type="box" pos="-0.58057 1.91388 0.15000" euler="0 0 106.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_69_1" type="box" pos="-0.70450 1.87181 0.15000" euler="0 0 110.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_69_2" type="box" pos="-0.82541 1.82173 0.15000" euler="0 0 114.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_69_3" type="box" pos="-0.94279 1.76384 0.15000" euler="0 0 118.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_70_0" type="box" pos="-1.05614 1.69840 0.15000" euler="0 0 121.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_70_1" type="box" pos="-1.16496 1.62569 0.15000" euler="0 0 125.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_70_2" type="box" pos="-1.26879 1.54602 0.15000" euler="0 0 129.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_70_3" type="box" pos="-1.36718 1.45973 0.15000" euler="0 0 133.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_71_0" type="box" pos="-1.45973 1.36718 0.15000" euler="0 0 136.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_71_1" type="box" pos="-1.54602 1.26879 0.15000" euler="0 0 140.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_71_2" type="box" pos="-1.62569 1.16496 0.15000" euler="0 0 144.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_71_3" type="box" pos="-1.69840 1.05614 0.15000" euler="0 0 148.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_72_0" type="box" pos="-1.99893 -0.06544 0.15000" euler="0 0 181.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_72_1" type="box" pos="-1.99037 -0.19603 0.15000" euler="0 0 185.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_72_2" type="box" pos="-1.97329 -0.32579 0.15000" euler="0 0 189.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_72_3" type="box" pos="-1.94775 -0.45415 0.15000" euler="0 0 193.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_73_0" type="box" pos="-1.91388 -0.58057 0.15000" euler="0 0 196.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_73_1" type="box" pos="-1.87181 -0.70450 0.15000" euler="0 0 200.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_73_2" type="box" pos="-1.82173 -0.82541 0.15000" euler="0 0 204.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_73_3" type="box" pos="-1.76384 -0.94279 0.15000" euler="0 0 208.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_74_0" type="box" pos="-1.69840 -1.05614 0.15000" euler="0 0 211.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_74_1" type="box" pos="-1.62569 -1.16496 0.15000" euler="0 0 215.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_74_2" type="box" pos="-1.54602 -1.26879 0.15000" euler="0 0 219.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_74_3" type="box" pos="-1.45973 -1.36718 0.15000" euler="0 0 223.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_75_0" type="box" pos="-1.36718 -1.45973 0.15000" euler="0 0 226.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_75_1" type="box" pos="-1.26879 -1.54602 0.15000" euler="0 0 230.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_75_2" type="box" pos="-1.16496 -1.62569 0.15000" euler="0 0 234.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_75_3" type="box" pos="-1.05614 -1.69840 0.15000" euler="0 0 238.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_76_0" type="box" pos="-0.94279 -1.76384 0.15000" euler="0 0 241.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_76_1" type="box" pos="-0.82541 -1.82173 0.15000" euler="0 0 245.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_76_2" type="box" pos="-0.70450 -1.87181 0.15000" euler="0 0 249.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_76_3" type="box" pos="-0.58057 -1.91388 0.15000" euler="0 0 253.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_77_0" type="box" pos="-0.45415 -1.94775 0.15000" euler="0 0 256.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_77_1" type="box" pos="-0.32579 -1.97329 0.15000" euler="0 0 260.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_77_2" type="box" pos="-0.19603 -1.99037 0.15000" euler="0 0 264.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_77_3" type="box" pos="-0.06544 -1.99893 0.15000" euler="0 0 268.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_78_0" type="box" pos="0.06544 -1.99893 0.15000" euler="0 0 271.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_78_1" type="box" pos="0.19603 -1.99037 0.15000" euler="0 0 275.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_78_2" type="box" pos="0.32579 -1.97329 0.15000" euler="0 0 279.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_78_3" type="box" pos="0.45415 -1.94775 0.15000" euler="0 0 283.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_79_0" type="box" pos="0.58057 -1.91388 0.15000" euler="0 0 286.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_79_1" type="box" pos="0.70450 -1.87181 0.15000" euler="0 0 290.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_79_2" type="box" pos="0.82541 -1.82173 0.15000" euler="0 0 294.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_79_3" type="box" pos="0.94279 -1.76384 0.15000" euler="0 0 298.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_80_0" type="box" pos="1.05614 -1.69840 0.15000" euler="0 0 301.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_80_1" type="box" pos="1.16496 -1.62569 0.15000" euler="0 0 305.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_80_2" type="box" pos="1.26879 -1.54602 0.15000" euler="0 0 309.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_80_3" type="box" pos="1.36718 -1.45973 0.15000" euler="0 0 313.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_81_0" type="box" pos="1.45973 -1.36718 0.15000" euler="0 0 316.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_81_1" type="box" pos="1.54602 -1.26879 0.15000" euler="0 0 320.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_81_2" type="box" pos="1.62569 -1.16496 0.15000" euler="0 0 324.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_81_3" type="box" pos="1.69840 -1.05614 0.15000" euler="0 0 328.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_82_0" type="box" pos="1.76384 -0.94279 0.15000" euler="0 0 331.87500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_82_1" type="box" pos="1.82173 -0.82541 0.15000" euler="0 0 335.62500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_82_2" type="box" pos="1.87181 -0.70450 0.15000" euler="0 0 339.37500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_82_3" type="box" pos="1.91388 -0.58057 0.15000" euler="0 0 343.12500" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_83_0" type="box" pos="1.72089 1.81344 0.15000" euler="0 0 46.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_83_1" type="box" pos="1.62362 1.90101 0.15000" euler="0 0 49.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_83_2" type="box" pos="1.52190 1.98338 0.15000" euler="0 0 52.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_83_3" type="box" pos="1.41602 2.06032 0.15000" euler="0 0 55.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_83_4" type="box" pos="1.30625 2.13160 0.15000" euler="0 0 58.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_84_0" type="box" pos="-0.06544 2.49914 0.15000" euler="0 0 91.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_84_1" type="box" pos="-0.19615 2.49229 0.15000" euler="0 0 94.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_84_2" type="box" pos="-0.32632 2.47861 0.15000" euler="0 0 97.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_84_3" type="box" pos="-0.45559 2.45814 0.15000" euler="0 0 100.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_84_4" type="box" pos="-0.58361 2.43092 0.15000" euler="0 0 103.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_85_0" type="box" pos="-1.30625 2.13160 0.15000" euler="0 0 121.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_85_1" type="box" pos="-1.41602 2.06032 0.15000" euler="0 0 124.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_85_2" type="box" pos="-1.52190 1.98338 0.15000" euler="0 0 127.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_85_3" type="box" pos="-1.62362 1.90101 0.15000" euler="0 0 130.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_85_4" type="box" pos="-1.72089 1.81344 0.15000" euler="0 0 133.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_86_0" type="box" pos="-1.72089 -1.81344 0.15000" euler="0 0 226.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_86_1" type="box" pos="-1.62362 -1.90101 0.15000" euler="0 0 229.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_86_2" type="box" pos="-1.52190 -1.98338 0.15000" euler="0 0 232.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_86_3" type="box" pos="-1.41602 -2.06032 0.15000" euler="0 0 235.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_86_4" type="box" pos="-1.30625 -2.13160 0.15000" euler="0 0 238.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_87_0" type="box" pos="-1.19290 -2.19704 0.15000" euler="0 0 241.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_87_1" type="box" pos="-1.07628 -2.25646 0.15000" euler="0 0 244.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_87_2" type="box" pos="-0.95671 -2.30970 0.15000" euler="0 0 247.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_87_3" type="box" pos="-0.83452 -2.35660 0.15000" euler="0 0 250.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_87_4" type="box" pos="-0.71004 -2.39705 0.15000" euler="0 0 253.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_88_0" type="box" pos="2.19704 -1.19290 0.15000" euler="0 0 331.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_88_1" type="box" pos="2.25646 -1.07628 0.15000" euler="0 0 334.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_88_2" type="box" pos="2.30970 -0.95671 0.15000" euler="0 0 337.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_88_3" type="box" pos="2.35660 -0.83452 0.15000" euler="0 0 340.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_88_4" type="box" pos="2.39705 -0.71004 0.15000" euler="0 0 343.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_89_0" type="box" pos="2.43092 -0.58361 0.15000" euler="0 0 346.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_89_1" type="box" pos="2.45814 -0.45559 0.15000" euler="0 0 349.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_89_2" type="box" pos="2.47861 -0.32632 0.15000" euler="0 0 352.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_89_3" type="box" pos="2.49229 -0.19615 0.15000" euler="0 0 355.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wa_89_4" type="box" pos="2.49914 -0.06544 0.15000" euler="0 0 358.50000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_90_0" type="box" pos="2.99929 0.06544 0.15000" euler="0 0 1.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_90_1" type="box" pos="2.99358 0.19621 0.15000" euler="0 0 3.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_90_2" type="box" pos="2.98217 0.32660 0.15000" euler="0 0 6.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_90_3" type="box" pos="2.96508 0.45637 0.15000" euler="0 0 8.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_90_4" type="box" pos="2.94236 0.58527 0.15000" euler="0 0 11.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_90_5" type="box" pos="2.91403 0.71306 0.15000" euler="0 0 13.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_91_0" type="box" pos="2.88015 0.83949 0.15000" euler="0 0 16.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_91_1" type="box" pos="2.84079 0.96432 0.15000" euler="0 0 18.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_91_2" type="box" pos="2.79602 1.08731 0.15000" euler="0 0 21.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_91_3" type="box" pos="2.74593 1.20824 0.15000" euler="0 0 23.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_91_4" type="box" pos="2.69062 1.32687 0.15000" euler="0 0 26.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_91_5" type="box" pos="2.63018 1.44297 0.15000" euler="0 0 28.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_92_0" type="box" pos="2.56474 1.55632 0.15000" euler="0 0 31.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_92_1" type="box" pos="2.49441 1.66671 0.15000" euler="0 0 33.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_92_2" type="box" pos="2.41933 1.77393 0.15000" euler="0 0 36.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_92_3" type="box" pos="2.33965 1.87777 0.15000" euler="0 0 38.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_92_4" type="box" pos="2.25552 1.97804 0.15000" euler="0 0 41.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_92_5" type="box" pos="2.16709 2.07454 0.15000" euler="0 0 43.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_93_0" type="box" pos="2.07454 2.16709 0.15000" euler="0 0 46.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_93_1" type="box" pos="1.97804 2.25552 0.15000" euler="0 0 48.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_93_2" type="box" pos="1.87777 2.33965 0.15000" euler="0 0 51.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_93_3" type="box" pos="1.77393 2.41933 0.15000" euler="0 0 53.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_93_4" type="box" pos="1.66671 2.49441 0.15000" euler="0 0 56.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_93_5" type="box" pos="1.55632 2.56474 0.15000" euler="0 0 58.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_94_0" type="box" pos="1.44297 2.63018 0.15000" euler="0 0 61.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_94_1" type="box" pos="1.32687 2.69062 0.15000" euler="0 0 63.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_94_2" type="box" pos="1.20824 2.74593 0.15000" euler="0 0 66.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_94_3" type="box" pos="1.08731 2.79602 0.15000" euler="0 0 68.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_94_4" type="box" pos="0.96432 2.84079 0.15000" euler="0 0 71.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_94_5" type="box" pos="0.83949 2.88015 0.15000" euler="0 0 73.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_95_0" type="box" pos="0.71306 2.91403 0.15000" euler="0 0 76.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_95_1" type="box" pos="0.58527 2.94236 0.15000" euler="0 0 78.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_95_2" type="box" pos="0.45637 2.96508 0.15000" euler="0 0 81.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_95_3" type="box" pos="0.32660 2.98217 0.15000" euler="0 0 83.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_95_4" type="box" pos="0.19621 2.99358 0.15000" euler="0 0 86.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_95_5" type="box" pos="0.06544 2.99929 0.15000" euler="0 0 88.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_96_0" type="box" pos="-0.06544 2.99929 0.15000" euler="0 0 91.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_96_1" type="box" pos="-0.19621 2.99358 0.15000" euler="0 0 93.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_96_2" type="box" pos="-0.32660 2.98217 0.15000" euler="0 0 96.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_96_3" type="box" pos="-0.45637 2.96508 0.15000" euler="0 0 98.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_96_4" type="box" pos="-0.58527 2.94236 0.15000" euler="0 0 101.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_96_5" type="box" pos="-0.71306 2.91403 0.15000" euler="0 0 103.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_97_0" type="box" pos="-0.83949 2.88015 0.15000" euler="0 0 106.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_97_1" type="box" pos="-0.96432 2.84079 0.15000" euler="0 0 108.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_97_2" type="box" pos="-1.08731 2.79602 0.15000" euler="0 0 111.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_97_3" type="box" pos="-1.20824 2.74593 0.15000" euler="0 0 113.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_97_4" type="box" pos="-1.32687 2.69062 0.15000" euler="0 0 116.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_97_5" type="box" pos="-1.44297 2.63018 0.15000" euler="0 0 118.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_98_0" type="box" pos="-1.55632 2.56474 0.15000" euler="0 0 121.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_98_1" type="box" pos="-1.66671 2.49441 0.15000" euler="0 0 123.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_98_2" type="box" pos="-1.77393 2.41933 0.15000" euler="0 0 126.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_98_3" type="box" pos="-1.87777 2.33965 0.15000" euler="0 0 128.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_98_4" type="box" pos="-1.97804 2.25552 0.15000" euler="0 0 131.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_98_5" type="box" pos="-2.07454 2.16709 0.15000" euler="0 0 133.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_99_0" type="box" pos="-2.16709 2.07454 0.15000" euler="0 0 136.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_99_1" type="box" pos="-2.25552 1.97804 0.15000" euler="0 0 138.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_99_2" type="box" pos="-2.33965 1.87777 0.15000" euler="0 0 141.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_99_3" type="box" pos="-2.41933 1.77393 0.15000" euler="0 0 143.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_99_4" type="box" pos="-2.49441 1.66671 0.15000" euler="0 0 146.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_99_5" type="box" pos="-2.56474 1.55632 0.15000" euler="0 0 148.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_100_0" type="box" pos="-2.63018 1.44297 0.15000" euler="0 0 151.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_100_1" type="box" pos="-2.69062 1.32687 0.15000" euler="0 0 153.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_100_2" type="box" pos="-2.74593 1.20824 0.15000" euler="0 0 156.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_100_3" type="box" pos="-2.79602 1.08731 0.15000" euler="0 0 158.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_100_4" type="box" pos="-2.84079 0.96432 0.15000" euler="0 0 161.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_100_5" type="box" pos="-2.88015 0.83949 0.15000" euler="0 0 163.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_101_0" type="box" pos="-2.91403 0.71306 0.15000" euler="0 0 166.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_101_1" type="box" pos="-2.94236 0.58527 0.15000" euler="0 0 168.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_101_2" type="box" pos="-2.96508 0.45637 0.15000" euler="0 0 171.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_101_3" type="box" pos="-2.98217 0.32660 0.15000" euler="0 0 173.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_101_4" type="box" pos="-2.99358 0.19621 0.15000" euler="0 0 176.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_101_5" type="box" pos="-2.99929 0.06544 0.15000" euler="0 0 178.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_102_0" type="box" pos="-2.99929 -0.06544 0.15000" euler="0 0 181.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_102_1" type="box" pos="-2.99358 -0.19621 0.15000" euler="0 0 183.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_102_2" type="box" pos="-2.98217 -0.32660 0.15000" euler="0 0 186.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_102_3" type="box" pos="-2.96508 -0.45637 0.15000" euler="0 0 188.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_102_4" type="box" pos="-2.94236 -0.58527 0.15000" euler="0 0 191.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_102_5" type="box" pos="-2.91403 -0.71306 0.15000" euler="0 0 193.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_103_0" type="box" pos="-2.88015 -0.83949 0.15000" euler="0 0 196.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_103_1" type="box" pos="-2.84079 -0.96432 0.15000" euler="0 0 198.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_103_2" type="box" pos="-2.79602 -1.08731 0.15000" euler="0 0 201.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_103_3" type="box" pos="-2.74593 -1.20824 0.15000" euler="0 0 203.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_103_4" type="box" pos="-2.69062 -1.32687 0.15000" euler="0 0 206.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_103_5" type="box" pos="-2.63018 -1.44297 0.15000" euler="0 0 208.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_104_0" type="box" pos="-2.56474 -1.55632 0.15000" euler="0 0 211.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_104_1" type="box" pos="-2.49441 -1.66671 0.15000" euler="0 0 213.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_104_2" type="box" pos="-2.41933 -1.77393 0.15000" euler="0 0 216.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_104_3" type="box" pos="-2.33965 -1.87777 0.15000" euler="0 0 218.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_104_4" type="box" pos="-2.25552 -1.97804 0.15000" euler="0 0 221.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_104_5" type="box" pos="-2.16709 -2.07454 0.15000" euler="0 0 223.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_105_0" type="box" pos="-2.07454 -2.16709 0.15000" euler="0 0 226.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_105_1" type="box" pos="-1.97804 -2.25552 0.15000" euler="0 0 228.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_105_2" type="box" pos="-1.87777 -2.33965 0.15000" euler="0 0 231.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_105_3" type="box" pos="-1.77393 -2.41933 0.15000" euler="0 0 233.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_105_4" type="box" pos="-1.66671 -2.49441 0.15000" euler="0 0 236.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_105_5" type="box" pos="-1.55632 -2.56474 0.15000" euler="0 0 238.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_106_0" type="box" pos="-1.44297 -2.63018 0.15000" euler="0 0 241.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_106_1" type="box" pos="-1.32687 -2.69062 0.15000" euler="0 0 243.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_106_2" type="box" pos="-1.20824 -2.74593 0.15000" euler="0 0 246.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_106_3" type="box" pos="-1.08731 -2.79602 0.15000" euler="0 0 248.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_106_4" type="box" pos="-0.96432 -2.84079 0.15000" euler="0 0 251.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_106_5" type="box" pos="-0.83949 -2.88015 0.15000" euler="0 0 253.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_107_0" type="box" pos="-0.71306 -2.91403 0.15000" euler="0 0 256.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_107_1" type="box" pos="-0.58527 -2.94236 0.15000" euler="0 0 258.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_107_2" type="box" pos="-0.45637 -2.96508 0.15000" euler="0 0 261.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_107_3" type="box" pos="-0.32660 -2.98217 0.15000" euler="0 0 263.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_107_4" type="box" pos="-0.19621 -2.99358 0.15000" euler="0 0 266.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_107_5" type="box" pos="-0.06544 -2.99929 0.15000" euler="0 0 268.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_108_0" type="box" pos="0.06544 -2.99929 0.15000" euler="0 0 271.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_108_1" type="box" pos="0.19621 -2.99358 0.15000" euler="0 0 273.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_108_2" type="box" pos="0.32660 -2.98217 0.15000" euler="0 0 276.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_108_3" type="box" pos="0.45637 -2.96508 0.15000" euler="0 0 278.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_108_4" type="box" pos="0.58527 -2.94236 0.15000" euler="0 0 281.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_108_5" type="box" pos="0.71306 -2.91403 0.15000" euler="0 0 283.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_109_0" type="box" pos="0.83949 -2.88015 0.15000" euler="0 0 286.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_109_1" type="box" pos="0.96432 -2.84079 0.15000" euler="0 0 288.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_109_2" type="box" pos="1.08731 -2.79602 0.15000" euler="0 0 291.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_109_3" type="box" pos="1.20824 -2.74593 0.15000" euler="0 0 293.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_109_4" type="box" pos="1.32687 -2.69062 0.15000" euler="0 0 296.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_109_5" type="box" pos="1.44297 -2.63018 0.15000" euler="0 0 298.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_110_0" type="box" pos="1.55632 -2.56474 0.15000" euler="0 0 301.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_110_1" type="box" pos="1.66671 -2.49441 0.15000" euler="0 0 303.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_110_2" type="box" pos="1.77393 -2.41933 0.15000" euler="0 0 306.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_110_3" type="box" pos="1.87777 -2.33965 0.15000" euler="0 0 308.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_110_4" type="box" pos="1.97804 -2.25552 0.15000" euler="0 0 311.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_110_5" type="box" pos="2.07454 -2.16709 0.15000" euler="0 0 313.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_111_0" type="box" pos="2.16709 -2.07454 0.15000" euler="0 0 316.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_111_1" type="box" pos="2.25552 -1.97804 0.15000" euler="0 0 318.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_111_2" type="box" pos="2.33965 -1.87777 0.15000" euler="0 0 321.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_111_3" type="box" pos="2.41933 -1.77393 0.15000" euler="0 0 323.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_111_4" type="box" pos="2.49441 -1.66671 0.15000" euler="0 0 326.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_111_5" type="box" pos="2.56474 -1.55632 0.15000" euler="0 0 328.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_112_0" type="box" pos="2.63018 -1.44297 0.15000" euler="0 0 331.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_112_1" type="box" pos="2.69062 -1.32687 0.15000" euler="0 0 333.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_112_2" type="box" pos="2.74593 -1.20824 0.15000" euler="0 0 336.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_112_3" type="box" pos="2.79602 -1.08731 0.15000" euler="0 0 338.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_112_4" type="box" pos="2.84079 -0.96432 0.15000" euler="0 0 341.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_112_5" type="box" pos="2.88015 -0.83949 0.15000" euler="0 0 343.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_113_0" type="box" pos="2.91403 -0.71306 0.15000" euler="0 0 346.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_113_1" type="box" pos="2.94236 -0.58527 0.15000" euler="0 0 348.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_113_2" type="box" pos="2.96508 -0.45637 0.15000" euler="0 0 351.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_113_3" type="box" pos="2.98217 -0.32660 0.15000" euler="0 0 353.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_113_4" type="box" pos="2.99358 -0.19621 0.15000" euler="0 0 356.25000" size="0.01500 0.06872 0.15000" class="wall"/>
+    <geom name="wo_113_5" type="box" pos="2.99929 -0.06544 0.15000" euler="0 0 358.75000" size="0.01500 0.06872 0.15000" class="wall"/>
+
+
+    <body name="bot" pos="1.68847 2.14018 0.05">
+      <joint name="slide_x" type="slide" axis="1 0 0" damping="0.5"/>
+      <joint name="slide_y" type="slide" axis="0 1 0" damping="0.5"/>
+      <joint name="yaw" type="hinge" axis="0 0 1" damping="0.05"/>
+      <site name="chassis_site" pos="0 0 0" size="0.01"/>
+      <geom name="chassis" type="cylinder" size="0.09 0.035" pos="0 0 0" class="bot_body"/>
+      <geom name="heading_mark" type="box" size="0.03 0.015 0.005" pos="0.07 0 0.045" class="bot_marker"/>
+      <geom name="wheel_left_g" type="cylinder" size="0.045 0.015" pos="0 0.10 -0.005" euler="90 0 0" class="wheel"/>
+      <geom name="wheel_right_g" type="cylinder" size="0.045 0.015" pos="0 -0.10 -0.005" euler="90 0 0" class="wheel"/>
+      <site name="rf_0" pos="0 0 0.01" zaxis="1.00000 0.00000 0" size="0.005"/>
+      <site name="rf_1" pos="0 0 0.01" zaxis="0.92388 0.38268 0" size="0.005"/>
+      <site name="rf_2" pos="0 0 0.01" zaxis="0.70711 0.70711 0" size="0.005"/>
+      <site name="rf_3" pos="0 0 0.01" zaxis="0.38268 0.92388 0" size="0.005"/>
+      <site name="rf_4" pos="0 0 0.01" zaxis="0.00000 1.00000 0" size="0.005"/>
+      <site name="rf_5" pos="0 0 0.01" zaxis="-0.38268 0.92388 0" size="0.005"/>
+      <site name="rf_6" pos="0 0 0.01" zaxis="-0.70711 0.70711 0" size="0.005"/>
+      <site name="rf_7" pos="0 0 0.01" zaxis="-0.92388 0.38268 0" size="0.005"/>
+      <site name="rf_8" pos="0 0 0.01" zaxis="-1.00000 0.00000 0" size="0.005"/>
+      <site name="rf_9" pos="0 0 0.01" zaxis="-0.92388 -0.38268 0" size="0.005"/>
+      <site name="rf_10" pos="0 0 0.01" zaxis="-0.70711 -0.70711 0" size="0.005"/>
+      <site name="rf_11" pos="0 0 0.01" zaxis="-0.38268 -0.92388 0" size="0.005"/>
+      <site name="rf_12" pos="0 0 0.01" zaxis="-0.00000 -1.00000 0" size="0.005"/>
+      <site name="rf_13" pos="0 0 0.01" zaxis="0.38268 -0.92388 0" size="0.005"/>
+      <site name="rf_14" pos="0 0 0.01" zaxis="0.70711 -0.70711 0" size="0.005"/>
+      <site name="rf_15" pos="0 0 0.01" zaxis="0.92388 -0.38268 0" size="0.005"/>
+    </body>
+
+  </worldbody>
+
+  <actuator>
+    <velocity name="motor_x" joint="slide_x" kv="8.0" ctrlrange="-3 3"/>
+    <velocity name="motor_y" joint="slide_y" kv="8.0" ctrlrange="-3 3"/>
+    <velocity name="motor_yaw" joint="yaw" kv="3.0" ctrlrange="-6 6"/>
+  </actuator>
+
+  <sensor>
+    <rangefinder name="s_rf_0" site="rf_0" cutoff="6.600"/>
+    <rangefinder name="s_rf_1" site="rf_1" cutoff="6.600"/>
+    <rangefinder name="s_rf_2" site="rf_2" cutoff="6.600"/>
+    <rangefinder name="s_rf_3" site="rf_3" cutoff="6.600"/>
+    <rangefinder name="s_rf_4" site="rf_4" cutoff="6.600"/>
+    <rangefinder name="s_rf_5" site="rf_5" cutoff="6.600"/>
+    <rangefinder name="s_rf_6" site="rf_6" cutoff="6.600"/>
+    <rangefinder name="s_rf_7" site="rf_7" cutoff="6.600"/>
+    <rangefinder name="s_rf_8" site="rf_8" cutoff="6.600"/>
+    <rangefinder name="s_rf_9" site="rf_9" cutoff="6.600"/>
+    <rangefinder name="s_rf_10" site="rf_10" cutoff="6.600"/>
+    <rangefinder name="s_rf_11" site="rf_11" cutoff="6.600"/>
+    <rangefinder name="s_rf_12" site="rf_12" cutoff="6.600"/>
+    <rangefinder name="s_rf_13" site="rf_13" cutoff="6.600"/>
+    <rangefinder name="s_rf_14" site="rf_14" cutoff="6.600"/>
+    <rangefinder name="s_rf_15" site="rf_15" cutoff="6.600"/>
+    <framepos name="s_pos" objtype="site" objname="chassis_site"/>
+    <framequat name="s_quat" objtype="site" objname="chassis_site"/>
+  </sensor>
+</mujoco>
